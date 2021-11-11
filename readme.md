@@ -4,7 +4,7 @@ Deze code wordt door ['t Voetje](https://voetje.jonaseveraert.be) gebruikt om te
 ## Inhoudstafel
 - [Hoe het werkt](#hoe-het-werkt)
 - [Waarom Rust?](#waarom-in-rust)
-- [Hoe kan jij helpen?](#hoe-kan-jij-helpen?)
+- [Hoe kan jij helpen?](#hoe-kan-jij-helpen)
 
 ## Hoe het werkt
 Alle functies voor het encoderen worden geschreven in pure Rust en staan in [encoding_funcs.rs](src/encoding_funcs.rs).<br/>
