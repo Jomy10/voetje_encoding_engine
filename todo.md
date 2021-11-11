@@ -1,12 +1,12 @@
 # Coderingen
 ## Standaard coderingen ('t Voetje)
-- [] Morse
-- [] Limonade
-- [] Blokmethode
+- [ ] Morse
+- [ ] Limonade
+- [ ] Blokmethode
 - [X] Jaartal
-- [] Raamgeheimschrift
-- [] Windroos
-- [] Woord Omkeren
-- [] Cijferschrift
-- [] Kijk-Kleur
-- [] Letters Vervangen
+- [ ] Raamgeheimschrift
+- [ ] Windroos
+- [ ] Woord Omkeren
+- [ ] Cijferschrift
+- [ ] Kijk-Kleur
+- [ ] Letters Vervangen
