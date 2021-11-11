@@ -185,3 +185,45 @@ pub fn encode_jaar_uni(input: &str, jaar: &str) -> (u8, String) {
     }
 }
 
+/// # Encode Woord Omkeren (Universal)
+/// 
+/// Reverses every word in a `str`, while preserving punctuation.
+pub fn encode_omkeren_uni(input: &str) -> String {
+    let words: Vec<&str> = input.split(' ').collect();
+
+    let mut output = String::new();
+
+    for word in words {
+        dbg!(&word);
+        let mut reversed_word = String::new();
+
+        let word_length = word.chars().count();
+        let mut leesteken = String::new();
+
+        for i in 1..=word_length {
+            // c = char
+            let c = word.chars().nth(word_length - i).unwrap();
+            let allowed_chars = Regex::new(r"[0-9\p{latin}]").unwrap();
+            let leestekens_regex = Regex::new(r"[.,!?]").unwrap();
+            // Reverse if character is part of the latin alfabet, or a number
+            if allowed_chars.is_match(&String::from(c)) {
+                reversed_word = reversed_word + &String::from(c);
+            } else if leestekens_regex.is_match(&String::from(c)) {
+                // Leesteken na het woord toevoegen
+                leesteken = String::from(c);
+            } else {
+                // TODO: andere niet-tekst characters 
+            }
+        }
+
+        // Add reversed word to output
+        if output.is_empty() {
+            output = format!("{}{}", reversed_word, leesteken);
+        } else {
+            output = format!("{} {}{}", output, reversed_word, leesteken);
+        }
+    }
+
+    return String::from(output);
+}
+

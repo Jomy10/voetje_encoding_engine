@@ -6,7 +6,7 @@
 - [X] Jaartal
 - [ ] Raamgeheimschrift
 - [ ] Windroos
-- [ ] Woord Omkeren
+- [X] Woord Omkeren
 - [ ] Cijferschrift
 - [ ] Kijk-Kleur
 - [ ] Letters Vervangen
