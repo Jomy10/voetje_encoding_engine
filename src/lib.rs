@@ -1,9 +1,20 @@
-// C lib
-// Written by: Jonas Everaert
+#![warn(missing_docs)]
+//! This Source Code Form is subject to the terms of the Mozilla Public
+//! License, v. 2.0. If a copy of the MPL was not distributed with this
+//! file, You can obtain one at <http://mozilla.org/MPL/2.0/>.
+//! 
+//! # Voetje Encoding Engine<br/>
+//! Open-source library.<br/>
+//! Used in the app <a href="https://voetje.jonaseveraert.be">'t Voetje</a> (© KSA Noordzeegouw 2021) 
+//! to encode Strings. <br/>
+//! This library was created to share code between iOS (Swift) and Android (Java).
+//! 
+//! Written by: Jonas Everaeert<br/>
+//! Contributors: <br/>
 
 use std::os::raw::{c_char};
 use std::ffi::*;
-use libc::{c_int};
+// use libc::{c_int};
 mod encoding_funcs; // Import the encoding functions
 
 #[no_mangle]
