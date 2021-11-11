@@ -1,0 +1,21 @@
+[package]
+name = "encoding_engine"
+version = "0.1.1"
+edition = "2021"
+authors = ["Jonas Everaert"]
+description = "An encoding engine written in Rust for use in 't Voetje"
+homepage = "https://voetje.jonaseveraert.be"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[target.'cfg(target_os="android")'.dependencies]
+jni = { version = "0.19.0", default-features = false }
+
+[lib]
+name = "encoding_engine"
+crate-type = ["staticlib", "cdylib", "dylib"]
+
+[dependencies]
+libc = "0.2.0"
+regex = "1"
+jni = { version = "0.19.0", default-features = false }
