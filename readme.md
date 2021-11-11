@@ -29,7 +29,7 @@ pub extern "C" fn encode_jaar(input: *const c_char, jaar: *const c_char) -> C_Re
 #[cfg(target_os="ios")]
 #[no_mangle]
 // Memory vrij maken nadat `encode_jaar` gebruikt is (niet nodig in de Java functie)
-pub extern "C" fn jaar_free(cret: C_Return) { /... }
+pub extern "C" fn jaar_free(cret: C_Return) { //... }
 
 // Android functions
 #[cfg(target_os="android")]
