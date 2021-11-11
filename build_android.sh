@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+# Build file for building the Android library
+
 # Remove recursively
 rm -r target/aarch64-linux-android
 rm -r target/armv7-linux-androideabi

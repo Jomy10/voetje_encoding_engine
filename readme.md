@@ -45,6 +45,8 @@ pub mod android {
 }
 ```
 
+Alle comments in mijn code zijn geschreven in het Engels, uit gewoonte.
+
 ## Waarom in Rust?
 Rust is veilig en zeer efficient. Deze Rust library kan gemakkelijk gecompileerd worden om gebruikt te worden op iOS en Android. Er is ook de mogelijkheid om te compileren naar WebAssembly en een heleboel andere programeertalen. Daarnaast heeft Rust ook een grote community die je altijd zal helpen en zijn er een heleboel open-source libraries beschikbaar.
 
@@ -56,3 +58,13 @@ Een lijst met alle coderingen die nog gedaan moeten worden vindt je in [todo.md]
 In de toekomst zal ik misschien nog een link tussen Python en Rust toevoegen zodat functies ook in Python geschreven kunnen worden. 
 Hulp hierbij is ook altijd welkom. 
 Ken jij een andere programmeertaal en wil je helpen bij dit project? Laat het me weten, als er genoeg vraag naar is codeer ik nog meer linken zodat meer programmeertalen gebruikt kunnen worden.
+
+**Comments**<bt/>
+Voel je vrij om comments te schrijven in het Nederlands of het Engels.
+Zorg er wel voor dat je code verstaanbaar is voor anderen, je kan nooit te veel comments schrijven!
+
+**Functies**<br/>
+De functies om te encoderen moeten String accepteren als input (en eventueel andere variabelen nodig voor de functie) en ze moeten een String teruggeven, eventueel ook andere variabelen. Zorg ervoor dat je code genoeg comments bevat over welke variabelen als input gebruikt worden en wat je functie teruggeven als output.
+
+**Nog een laatste comment voordat je begint**<br/>
+Het is voldoende om een functie te schrijven in [encoding_funcs.rs](src/encoding_funcs.rs). Ik zal dan wel de link functies schrijven in [lib.rs](src/lib.rs), maar voel je altijd vrij om deze ook zelf te schrijven.

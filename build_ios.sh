@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+# Build file for building the iOS library
+
 echo "Building encoding_engine for iOS target..."
 cargo lipo --release
 
