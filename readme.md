@@ -10,7 +10,7 @@ Deze code wordt door ['t Voetje](https://voetje.jonaseveraert.be) gebruikt om te
 Alle functies voor het encoderen worden geschreven in pure Rust en staan in [encoding_funcs.rs](src/encoding_funcs.rs).<br/>
 Vervolgens wordt er gebruik gemaakt van `ffi` en `jni` zodat deze gebruikt kunnen worden in Swift (C) en Java (Swift voor iOS en Java voor Android). 
 
-**Voorbeeld**
+**Voorbeeld**<br/>
 In [encoding_funcs.rs](src/encoding_funcs.rs) staat de functie voor het encoderen vaan *Jaartal*.
 ```Rust
 pub fn encode_jaar_uni(input: &str, jaar: &str) -> (u8, String) {
@@ -59,7 +59,7 @@ In de toekomst zal ik misschien nog een link tussen Python en Rust toevoegen zod
 Hulp hierbij is ook altijd welkom. 
 Ken jij een andere programmeertaal en wil je helpen bij dit project? Laat het me weten, als er genoeg vraag naar is codeer ik nog meer linken zodat meer programmeertalen gebruikt kunnen worden.
 
-**Comments**<bt/>
+**Comments**<br/>
 Voel je vrij om comments te schrijven in het Nederlands of het Engels.
 Zorg er wel voor dat je code verstaanbaar is voor anderen, je kan nooit te veel comments schrijven!
 
