@@ -37,10 +37,30 @@ typedef struct C_Return {
 struct C_Return encode_jaar(const char *input, const char *jaar);
 
 /**
+ * Reverses each word in a string.
+ *
+ * ## Parameters
+ * - input: the string to be encoded
+ *
+ * ## Returns
+ * - A string where all the words of the `input`have been reversed
+ *
+ * ## Freeing memory
+ * `omkeren_free`
+ */
+char *encode_omkeren(const char *input);
+
+/**
  * Has to be called after `encode_jaar` to the free memory
  *
- * Disregarding to do this will cause a memory leak.C_Return
+ * Disregarding to do this will cause a memory leak.
  *
  * Not applicable for Java.
  */
 void jaar_free(struct C_Return cret);
+
+/**
+ * Has to be called after `encode_omkeren` to the free memory.<br/>
+ * Disregarding to do this will cause a memory leak.
+ */
+void omkeren_free(char *s);

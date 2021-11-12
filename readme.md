@@ -4,7 +4,8 @@ Deze code wordt door ['t Voetje](https://voetje.jonaseveraert.be) gebruikt om te
 ## Inhoudstafel
 - [Hoe het werkt](#hoe-het-werkt)
 - [Waarom Rust?](#waarom-in-rust)
-- [Hoe kan jij helpen?](#hoe-kan-jij-helpen)
+- [Hoe kan ik helpen?](#hoe-kan-jij-helpen)
+    - [Andere manieren om bij te dragen](#andere-manieren-om-bij-te-dragen)
 
 ## Hoe het werkt
 Alle functies voor het encoderen worden geschreven in pure Rust en staan in [encoding_funcs.rs](src/encoding_funcs.rs).<br/>
@@ -50,7 +51,7 @@ Alle comments in mijn code zijn geschreven in het Engels, uit gewoonte.
 ## Waarom in Rust?
 Rust is veilig en zeer efficient. Deze Rust library kan gemakkelijk gecompileerd worden om gebruikt te worden op iOS en Android. Er is ook de mogelijkheid om te compileren naar WebAssembly en een heleboel andere programeertalen. Daarnaast heeft Rust ook een grote community die je altijd zal helpen en zijn er een heleboel open-source libraries beschikbaar.
 
-## Hoe kan jij helpen?
+## Hoe kan ik helpen?
 Je kan een functie schrijven in [encoding_funcs.rs](src/encoding_funcs.rs) om een van de coderingen te coderen die nog niet geschreven zijn, of je kan je eigen codering toevoegen.
 Een lijst met alle coderingen die nog gedaan moeten worden vindt je in [todo.md](src/todo.md). Maar zoals ik al zei, mag je ook altijd zelf coderingen voorstellen.
 
@@ -68,3 +69,7 @@ De functies om te encoderen moeten String accepteren als input (en eventueel and
 
 **Nog een laatste comment voordat je begint**<br/>
 Het is voldoende om een functie te schrijven in [encoding_funcs.rs](src/encoding_funcs.rs). Ik zal dan wel de link functies schrijven in [lib.rs](src/lib.rs), maar voel je altijd vrij om deze ook zelf te schrijven.
+
+### Andere manieren om bij te dragen
+Heb je geen kennis van programmeren maar wil je toch bijdragen? Suggesties voor nieuwe coderingen zijn altijd welkom. Ook zijn sommige coderingen niet mogelijk met tekst (bijvoordbeeld: laddermethode, chinese cijfers en raamgeheimschrift). Voor deze coderingen zijn er lettertypes die je in de [fonts](fonts) folder kan vinden. Alle drie hebben wel een redesign nodig.<br/>
+Nieuwe coderingen zijn ook altijd welkom, maar de voorkeur wordt gegeven aan tekst. Als je een nieuwe codering wil toevoegen, zet dan een bericht in de *Discussions* om te zien of deze codering geschikt is als afbeelding, of of deze toch beter als tekst geëncodeerd wordt.

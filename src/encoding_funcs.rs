@@ -194,7 +194,6 @@ pub fn encode_omkeren_uni(input: &str) -> String {
     let mut output = String::new();
 
     for word in words {
-        dbg!(&word);
         let mut reversed_word = String::new();
 
         let word_length = word.chars().count();

@@ -103,11 +103,13 @@ pub struct C_Return {
 }
 
 fn c_string_to_rust_str(c_string: *const c_char) -> String {
+    let error = String::from("ERROR"); // TODO
     let c_str = unsafe { CStr::from_ptr(c_string)};
     let rust_str = match c_str.to_str() {
         Ok(str) => str,
         Err(err) => {
             println!("An error occured: {}", err);
+            &error
         }
     };
     let rust_str = rust_str.to_owned();
@@ -117,6 +119,7 @@ fn c_string_to_rust_str(c_string: *const c_char) -> String {
 // Swift //
 
 #[cfg(target_os="ios")]
+/// This module deals with freeing memory after an encoding function has been called.
 pub mod memory {
     use super::*;
 
@@ -136,9 +139,9 @@ pub mod memory {
     #[no_mangle]
     /// Has to be called after `encode_omkeren` to the free memory.<br/>
     /// Disregarding to do this will cause a memory leak.
-    pub extern "C" fn omkeren_free(s: *mut char) {
+    pub extern "C" fn omkeren_free(s: *mut c_char) {
         unsafe {
-            if s.is_null { return }
+            if s.is_null() { return }
             CString::from_raw(s);
         }
     }
