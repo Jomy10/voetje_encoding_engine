@@ -10,3 +10,6 @@
 - [ ] Cijferschrift
 - [ ] Kijk-Kleur
 - [ ] Letters Vervangen
+
+## Bugs
+- [ ] Het lettertype van Chinese Cijfers is niet op dezelfde lijn als andere lettertypes (zie: iOS App > Decoderen > Cijferschrift)
