@@ -16,3 +16,5 @@ cp encoding_engine/e_engine.h include
 cp encoding_engine/target/universal/release/libencoding_engine.a libs
 
 echo "Build complete."
+
+# TODO: #2 #define TARGET_OS_IOS toevoegen aan e_engine.h (nodig voor iOS)
