@@ -2,13 +2,13 @@
 # Also copied to ~/.cargo/config
 # Don't forget to change the NDK number (should use environment variables, oeps)
 [target.aarch64-linux-android]
-ar = "/Users/jonaseveraert/Library/Android/sdk/ndk/android-ndk-r22b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ar"
-linker = "/Users/jonaseveraert/Library/Android/sdk/ndk/android-ndk-r22b/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android21-clang"
+ar = "/Users/jonaseveraert/Library/Android/sdk/ndk/NDK/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android-ar"
+linker = "/Users/jonaseveraert/Library/Android/sdk/ndk/NDK/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android21-clang.cmd"
 
 [target.armv7-linux-androideabi]
-ar = "/Users/jonaseveraert/Library/Android/sdk/ndk/android-ndk-r22b/toolchains/llvm/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-ar"
-linker = "/Users/jonaseveraert/Library/Android/sdk/ndk/android-ndk-r22b/toolchains/llvm/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-clang"
+ar = "/Users/jonaseveraert/Library/Android/sdk/ndk/NDK/toolchains/llvm/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-ar"
+linker = "/Users/jonaseveraert/Library/Android/sdk/ndk/NDK/toolchains/llvm/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-clang"
 
 [target.i686-linux-android]
-ar = "/Users/jonaseveraert/Library/Android/sdk/ndk/android-ndk-r22b/toolchains/llvm/prebuilt/darwin-x86_64/bin/i686-linux-android-ar"
-linker = "/Users/jonaseveraert/Library/Android/sdk/ndk/android-ndk-r22b/toolchains/llvm/prebuilt/darwin-x86_64/bin/i686-linux-android16-clang"
+ar = "/Users/jonaseveraert/Library/Android/sdk/ndk/NDK/toolchains/llvm/prebuilt/darwin-x86_64/bin/i686-linux-android-ar"
+linker = "/Users/jonaseveraert/Library/Android/sdk/ndk/NDK/toolchains/llvm/prebuilt/darwin-x86_64/bin/i686-linux-android16-clang"

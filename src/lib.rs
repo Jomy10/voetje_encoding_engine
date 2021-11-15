@@ -9,8 +9,8 @@
 //! to encode Strings. <br/>
 //! This library was created to share code between iOS (Swift) and Android (Java).
 //! 
-//! Written by: Jonas Everaeert<br/>
-//! Contributors: <br/>
+//! **Written by**: Jonas Everaeert<br/>
+//! **Contributors**: <br/>
 
 use std::os::raw::{c_char};
 use std::ffi::*;
