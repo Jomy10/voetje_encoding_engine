@@ -118,7 +118,7 @@ fn c_string_to_rust_str(c_string: *const c_char) -> String {
 
 // Swift //
 
-#[cfg(target_os="ios")]
+#[cfg(target_os = "ios")]
 /// This module deals with freeing memory after an encoding function has been called.
 pub mod memory {
     use super::*;
@@ -148,8 +148,7 @@ pub mod memory {
 }
 
 // Java //
-
-#[cfg(target_os="android")]
+#[cfg(target_os = "android")]
 #[allow(non_snake_case)]
 pub mod android {
     extern crate jni;
