@@ -21,7 +21,10 @@ This library was created to share code between iOS (Swift) and Android (Java).
 
 **Written by**: Jonas Everaeert<br/>
 **Contributors**: <br/>
-*/"""
+*/
+
+#define TARGET_OS_IOS 1
+"""
 # trailer = "/* Text to put at the end of the generated file */"
 # include_guard = "my_bindings_h"
 # pragma_once = true

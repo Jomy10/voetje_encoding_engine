@@ -7,7 +7,7 @@ cargo lipo --release
 
 echo "Building C header bridge file..."
 #cbindgen src/lib.rs -l c > e_engine.h
-cbindgen --config cbindgen.toml --crate src/lib.rs --output e_engine.h
+cbindgen --config cbindgen.toml --crate encoding_engine --output e_engine.h
 
 cd ..
 

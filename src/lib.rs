@@ -117,9 +117,9 @@ fn c_string_to_rust_str(c_string: *const c_char) -> String {
 }
 
 // Swift //
-
 #[cfg(target_os = "ios")]
 /// This module deals with freeing memory after an encoding function has been called.
+/// Only applies to Swift (iOS)
 pub mod memory {
     use super::*;
 
@@ -150,6 +150,7 @@ pub mod memory {
 // Java //
 #[cfg(target_os = "android")]
 #[allow(non_snake_case)]
+/// This module contains the Java functions (Android).
 pub mod android {
     extern crate jni;
     
@@ -159,7 +160,7 @@ pub mod android {
     use self::jni::sys::{jstring};
 
     #[no_mangle]
-    /// Encodeer jaar for Java (Android)
+    /// Encode jaar for Java (Android)
     /// 
     /// # Arguments
     /// - java_in `JString`: the input in Java

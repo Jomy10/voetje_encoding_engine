@@ -1,10 +1,25 @@
+/*
+This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at <http://mozilla.org/MPL/2.0/>.
+
+# Voetje Encoding Engine<br/>
+Open-source library.<br/>
+Used in the app <a href="https://voetje.jonaseveraert.be">'t Voetje</a> (© KSA Noordzeegouw 2021) 
+to encode Strings. <br/>
+This library was created to share code between iOS (Swift) and Android (Java).
+
+**Written by**: Jonas Everaeert<br/>
+**Contributors**: <br/>
+*/
+
+#define TARGET_OS_IOS 1
+
 #include <cstdarg>
 #include <cstddef>
 #include <cstdint>
 #include <cstdlib>
 #include <ostream>
 #include <new>
-
 
 /// A return type for C
 /// Contains a `return_code` which indicates any errors
@@ -14,8 +29,21 @@ struct C_Return {
   char *output;
 };
 
-
 extern "C" {
+
+#if defined(TARGET_OS_ANDROID)
+/// Encodeer jaar for Java (Android)
+///
+/// # Arguments
+/// - java_in `JString`: the input in Java
+/// - java_jaar `JString`: the inputted jaartal in Java
+/// - JNIEnv: object we will use to read values associated with the pointers that we are taking as argument
+/// - JClass: Class reference
+jstring Java_be_ksa_voetje_methods_encoderen_EncodingEngine_java_1encodeer_1jaar(JNIEnv env,
+                                                                                 JClass,
+                                                                                 JString java_in,
+                                                                                 JString java_jaar);
+#endif
 
 /// Encodes a string to jaartal
 ///
