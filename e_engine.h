@@ -12,8 +12,6 @@ This library was created to share code between iOS (Swift) and Android (Java).
 **Contributors**: <br/>
 */
 
-#define TARGET_OS_IOS 1
-
 #include <cstdarg>
 #include <cstddef>
 #include <cstdint>
@@ -21,7 +19,9 @@ This library was created to share code between iOS (Swift) and Android (Java).
 #include <ostream>
 #include <new>
 
-/// A return type for C
+
+/// A return type for C.
+///
 /// Contains a `return_code` which indicates any errors
 /// and an `output` indicating the output of the method
 struct C_Return {
@@ -29,10 +29,11 @@ struct C_Return {
   char *output;
 };
 
+
 extern "C" {
 
 #if defined(TARGET_OS_ANDROID)
-/// Encodeer jaar for Java (Android)
+/// Encode jaar for Java (Android)
 ///
 /// # Arguments
 /// - java_in `JString`: the input in Java
@@ -78,19 +79,15 @@ C_Return encode_jaar(const char *input, const char *jaar);
 /// `omkeren_free`
 char *encode_omkeren(const char *input);
 
-#if defined(TARGET_OS_IOS)
 /// Has to be called after `encode_jaar` to the free memory
 ///
-/// Disregarding to do this will cause a memory leak.
+/// Disregarding to do this will cause a **memory leak**.
 ///
 /// Not applicable for Java.
 void jaar_free(C_Return cret);
-#endif
 
-#if defined(TARGET_OS_IOS)
 /// Has to be called after `encode_omkeren` to the free memory.<br/>
-/// Disregarding to do this will cause a memory leak.
+/// Disregarding to do this will cause a **memory leak**.
 void omkeren_free(char *s);
-#endif
 
 } // extern "C"
