@@ -22,8 +22,6 @@ This library was created to share code between iOS (Swift) and Android (Java).
 **Written by**: Jonas Everaeert<br/>
 **Contributors**: <br/>
 */
-
-#define TARGET_OS_IOS 1
 """
 # trailer = "/* Text to put at the end of the generated file */"
 # include_guard = "my_bindings_h"
@@ -54,7 +52,9 @@ sort_by = "Name" # default for `fn.sort_by` and `const.sort_by`
 usize_is_size_t = true
 
 [defines]
-"target_os = ios" = "TARGET_OS_IOS"
+# We will only add Android here so that we can filter it out after 
+# the header file has been created
+# "target_os = ios" = "TARGET_OS_IOS"
 "target_os = android" = "TARGET_OS_ANDROID"
 # "feature = serde" = "DEFINE_SERDE"
 

@@ -10,6 +10,8 @@
 ///////////////////////////////////////////////////////////////////////////////////
 
 use regex::*;
+mod utils;
+use unicode_segmentation::UnicodeSegmentation;
 
 /// # Encode Jaar (Universal)
 /// 
@@ -50,12 +52,12 @@ pub fn encode_jaar_uni(input: &str, jaar: &str) -> (u8, String) {
             if s.chars().count() == 0 {
                 adjusted_sentences.remove(f);
             }
-            f = f + 1;
+            f += 1;
         }
 
         let mut output: String = String::new();
 
-        for sentence in adjusted_sentences {            
+        for sentence in adjusted_sentences {
             let mut jaar1: Vec<String> = vec![];
             let mut jaar2: Vec<String> = vec![];
             let mut jaar3: Vec<String> = vec![];
@@ -68,24 +70,30 @@ pub fn encode_jaar_uni(input: &str, jaar: &str) -> (u8, String) {
             // Trim sentence and to uppercase
             let sentence = sentence.trim().to_uppercase();
 
+            // Convert the String to a Vec<&str> containing graphemes!
+            // This is necessary because we cannot get sentence[i..] for characters that are more than
+            // 1 byte long (due to UTF-8 in Strings).
+            let graphemes = sentence.graphemes(true).collect::<Vec<&str>>();
+
             // Parse the sentence
             let mut i = 0;
 
             loop {
-                if sentence[i..].chars().count() == 0 {
+                // utils::get_vec_range_str(&graphemes, i, graphemes.len()) is kinda like sentence[i..], but with graphemes so the program won't panic.
+                if utils::get_vec_range_str(&graphemes, i, graphemes.len()).chars().count() == 0 {
                     break;
                 }
                 // Eerst jaar1
-                if sentence[i..].chars().count() > jaar_int[0].into() {
+                if utils::get_vec_range_str(&graphemes, i, graphemes.len()).chars().count() > jaar_int[0].into() {
                     let _j: usize = jaar_int[0].into();
-                    jaar1.push( sentence[i..(i+_j)].to_owned() );
+                    jaar1.push( utils::get_vec_range_str(&graphemes, i, i+_j).to_owned() );
                     i = i + _j;
                 } else {
                     // Less characters left than fit the jaartal jaar1 (= jaar_int[0])
-                    let lenght_left = sentence[i..].chars().count();
+                    let lenght_left = utils::get_vec_range_str(&graphemes, i, graphemes.len()).chars().count();
                     let x_to_add = Into::<usize>::into(jaar_int[0]) - lenght_left;
 
-                    let mut s = String::from(&sentence[i..]);
+                    let mut s = utils::get_vec_range_str(&graphemes, i, graphemes.len());
                     s.push_str(&"X".repeat(x_to_add));
 
                     jaar1.push(
@@ -95,14 +103,14 @@ pub fn encode_jaar_uni(input: &str, jaar: &str) -> (u8, String) {
                     break; 
                 }
                 // Dan jaar2
-                if sentence[i..].chars().count() > jaar_int[1].into() {
-                    jaar2.push( sentence[i..(i+Into::<usize>::into(jaar_int[1]))].to_owned() );
+                if utils::get_vec_range_str(&graphemes, i, graphemes.len()).chars().count() > jaar_int[1].into() {
+                    jaar2.push( utils::get_vec_range_str(&graphemes, i, i+Into::<usize>::into(jaar_int[1]))/* Not necessary anymore, because the functions already returns a String, which is owned. `.to_owned()` */);
                     i = i + Into::<usize>::into(jaar_int[1]);
                 } else {
-                    let lenght_left = sentence[i..].chars().count();
+                    let lenght_left = utils::get_vec_range_str(&graphemes, i, graphemes.len()).chars().count();
                     let x_to_add = Into::<usize>::into(jaar_int[1]) - lenght_left;
 
-                    let mut s = String::from(&sentence[i..]);
+                    let mut s = utils::get_vec_range_str(&graphemes, i, graphemes.len());
                     s.push_str(&"X".repeat(x_to_add));
 
                     jaar2.push(
@@ -111,14 +119,14 @@ pub fn encode_jaar_uni(input: &str, jaar: &str) -> (u8, String) {
                     // No more words in this sentence.
                     break; 
                 }
-                if sentence[i..].chars().count() > jaar_int[2].into() {
-                    jaar3.push( sentence[i..(i+Into::<usize>::into(jaar_int[2]))].to_owned() );
+                if utils::get_vec_range_str(&graphemes, i, graphemes.len()).chars().count() > jaar_int[2].into() {
+                    jaar3.push( utils::get_vec_range_str(&graphemes, i, i+Into::<usize>::into(jaar_int[2])) );
                     i = i + Into::<usize>::into(jaar_int[2]);
                 } else {
-                    let lenght_left = sentence[i..].chars().count();
+                    let lenght_left = utils::get_vec_range_str(&graphemes, i, graphemes.len()).chars().count();
                     let x_to_add = Into::<usize>::into(jaar_int[2]) - lenght_left;
 
-                    let mut s = String::from(&sentence[i..]);
+                    let mut s = utils::get_vec_range_str(&graphemes, i, graphemes.len());
                     s.push_str(&"X".repeat(x_to_add));
 
                     jaar3.push(
@@ -127,15 +135,15 @@ pub fn encode_jaar_uni(input: &str, jaar: &str) -> (u8, String) {
                     // No more words in this sentence.
                     break; 
                 }
-                if sentence[i..].chars().count() > jaar_int[3].into() {
-                    jaar4.push( sentence[i..(i+Into::<usize>::into(jaar_int[3]))].to_owned() );
+                if utils::get_vec_range_str(&graphemes, i, graphemes.len()).chars().count() > jaar_int[3].into() {
+                    jaar4.push( utils::get_vec_range_str(&graphemes, i, i+Into::<usize>::into(jaar_int[3])) );
                     i = i + Into::<usize>::into(jaar_int[3]);
                 } else {
-                    let lenght_left = sentence[i..].chars().count();
+                    let lenght_left = utils::get_vec_range_str(&graphemes, i, graphemes.len()).chars().count();
                     let x_to_add = Into::<usize>::into(jaar_int[3]) - lenght_left;
 
                     // String to add
-                    let mut s = String::from(&sentence[i..]);
+                    let mut s = utils::get_vec_range_str(&graphemes, i, graphemes.len());
                     s.push_str(&"X".repeat(x_to_add));
 
                     jaar4.push(

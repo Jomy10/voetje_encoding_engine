@@ -7,7 +7,9 @@ cargo lipo --release
 
 echo "Building C header bridge file..."
 #cbindgen src/lib.rs -l c > e_engine.h
-cbindgen --config cbindgen.toml --crate encoding_engine --output e_engine.h
+# cbindgen --config cbindgen.toml --crate encoding_engine --output e_engine.h ## Not working correctly
+
+echo "Reminder: Have you updated the header file? It is no longer updated automatically."
 
 cd ..
 

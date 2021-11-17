@@ -15,7 +15,7 @@
 use std::os::raw::{c_char};
 use std::ffi::*;
 // use libc::{c_int};
-mod encoding_funcs; // Import the encoding functions
+mod encoding_funcs; // Import the encoding functions as a module
 
 // Encoding Functions //
 
@@ -91,10 +91,44 @@ pub extern "C" fn encode_omkeren(input: *const c_char) -> *mut c_char {
     CString::new(output.to_owned()).unwrap().into_raw()
 }
 
-// Other //
+// Swift //
+#[cfg(target_os = "ios")]
+/// This module deals with freeing memory after an encoding function has been called.
+/// Only applies to Swift (iOS)
+/// 
+/// Disregarding to call the corresponding function after each encoding function will 
+/// cause a **memory leak**.
+pub mod memory {
+    use super::*;
 
+    #[no_mangle]
+    /// Has to be called after `encode_jaar` to the free memory
+    /// 
+    /// Disregarding to do this will cause a **memory leak**.
+    /// 
+    /// Not applicable for Java.
+    pub extern "C" fn jaar_free(cret: C_Return) {
+        unsafe {
+            if cret.output.is_null() { return }
+            CString::from_raw(cret.output)
+        };
+    }
+
+    #[no_mangle]
+    /// Has to be called after `encode_omkeren` to the free memory.<br/>
+    /// Disregarding to do this will cause a **memory leak**.
+    pub extern "C" fn omkeren_free(s: *mut c_char) {
+        unsafe {
+            if s.is_null() { return }
+            CString::from_raw(s);
+        }
+    }
+}
+
+// Other //
 #[repr(C)]
-/// A return type for C
+/// A return type for C.
+/// 
 /// Contains a `return_code` which indicates any errors
 /// and an `output` indicating the output of the method
 pub struct C_Return {
@@ -114,37 +148,6 @@ fn c_string_to_rust_str(c_string: *const c_char) -> String {
     };
     let rust_str = rust_str.to_owned();
     return rust_str;
-}
-
-// Swift //
-#[cfg(target_os = "ios")]
-/// This module deals with freeing memory after an encoding function has been called.
-/// Only applies to Swift (iOS)
-pub mod memory {
-    use super::*;
-
-    #[no_mangle]
-    /// Has to be called after `encode_jaar` to the free memory
-    /// 
-    /// Disregarding to do this will cause a memory leak.
-    /// 
-    /// Not applicable for Java.
-    pub extern "C" fn jaar_free(cret: C_Return) {
-        unsafe {
-            if cret.output.is_null() { return }
-            CString::from_raw(cret.output)
-        };
-    }
-
-    #[no_mangle]
-    /// Has to be called after `encode_omkeren` to the free memory.<br/>
-    /// Disregarding to do this will cause a memory leak.
-    pub extern "C" fn omkeren_free(s: *mut c_char) {
-        unsafe {
-            if s.is_null() { return }
-            CString::from_raw(s);
-        }
-    }
 }
 
 // Java //
