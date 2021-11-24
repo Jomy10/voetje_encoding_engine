@@ -67,6 +67,9 @@ Zorg er wel voor dat je code verstaanbaar is voor anderen, je kan nooit te veel 
 **Functies**<br/>
 De functies om te encoderen moeten String accepteren als input (en eventueel andere variabelen nodig voor de functie) en ze moeten een String teruggeven, eventueel ook andere variabelen. Zorg ervoor dat je code genoeg comments bevat over welke variabelen als input gebruikt worden en wat je functie teruggeven als output.
 
+**Tests**<br/>
+In [tests.rs](srs/tests.rs) vind je de tests voor elke functie. Deze zijn zeer gemakkelijk te schrijven in Rust en zeker voor dit soort van functies.
+
 **Nog een laatste comment voordat je begint**<br/>
 Het is voldoende om een functie te schrijven in [encoding_funcs.rs](src/encoding_funcs.rs). Ik zal dan wel de link functies schrijven in [lib.rs](src/lib.rs), maar voel je altijd vrij om deze ook zelf te schrijven.
 
