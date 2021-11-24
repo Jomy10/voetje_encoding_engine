@@ -15,7 +15,10 @@
 use std::os::raw::{c_char};
 use std::ffi::*;
 // use libc::{c_int};
-mod encoding_funcs; // Import the encoding functions as a module
+pub mod encoding_funcs; // Import the encoding functions as a module
+
+#[cfg(test)]
+mod tests;
 
 // Encoding Functions //
 

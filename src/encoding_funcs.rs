@@ -1,18 +1,18 @@
-///////////////////////////////////////////////////////////////////////////////////
-/// This file contains the rust functions for the library. These are use inside ///
-/// of the C and Java functions, so they share a common functionality. The      ///
-/// Functions for Java and C then convert the return values of these functions  ///
-/// to values they can read.                                                    ///
-/// `uni` in the function names stand for universal, indicating that these      ///
-/// are to be used by the different sub functions for the different platforms   ///
-///                                                                             ///
-/// Author: Jonas Everaert                                                      ///
-///////////////////////////////////////////////////////////////////////////////////
+//! This file contains the rust functions for the library. These are use inside
+//! of the C and Java functions, so they share a common functionality. The
+//! Functions for Java and C then convert the return values of these functions
+//! to values they can read.
+//! 
+//! `uni` in the function names stand for universal, indicating that these
+//! are to be used by the different sub functions for the different platforms
+//! 
+//! Author: Jonas Everaert
 
 use regex::*;
 mod utils;
 use unicode_segmentation::UnicodeSegmentation;
 
+// TODO: #3 return a reference to the result + return a Result<&str> instead of the tuple.
 /// # Encode Jaar (Universal)
 /// 
 /// Encodes a string `input` using the code `jaar`.
@@ -42,17 +42,15 @@ pub fn encode_jaar_uni(input: &str, jaar: &str) -> (u8, String) {
         let regex = Regex::new("[!.?]").unwrap();
         let sentences: Vec<&str> = regex.split(input).collect();
 
-        // dbg!(&sentences);
-
         let mut f = 0;
-
         // Remove empty elements of the sentences vector
         let mut adjusted_sentences: Vec<&str> = sentences.clone();
         for s in sentences {
             if s.chars().count() == 0 {
                 adjusted_sentences.remove(f);
+            } else {
+                f += 1;
             }
-            f += 1;
         }
 
         let mut output: String = String::new();

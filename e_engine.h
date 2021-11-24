@@ -12,12 +12,7 @@ This library was created to share code between iOS (Swift) and Android (Java).
 **Contributors**: <br/>
 */
 
-#include <cstdarg>
-#include <cstddef>
-#include <cstdint>
-#include <cstdlib>
-#include <ostream>
-#include <new>
+#include <stdint.h>
 
 
 /// A return type for C.
@@ -28,23 +23,6 @@ struct C_Return {
   uint32_t return_code;
   char *output;
 };
-
-
-extern "C" {
-
-#if defined(TARGET_OS_ANDROID)
-/// Encode jaar for Java (Android)
-///
-/// # Arguments
-/// - java_in `JString`: the input in Java
-/// - java_jaar `JString`: the inputted jaartal in Java
-/// - JNIEnv: object we will use to read values associated with the pointers that we are taking as argument
-/// - JClass: Class reference
-jstring Java_be_ksa_voetje_methods_encoderen_EncodingEngine_java_1encodeer_1jaar(JNIEnv env,
-                                                                                 JClass,
-                                                                                 JString java_in,
-                                                                                 JString java_jaar);
-#endif
 
 /// Encodes a string to jaartal
 ///
@@ -65,7 +43,7 @@ jstring Java_be_ksa_voetje_methods_encoderen_EncodingEngine_java_1encodeer_1jaar
 /// ## Freeing memory
 /// For Swift, it is important to call `jaar_free` after this function is called to free memory.
 /// Disregarding to do this will cause a memory leak.
-C_Return encode_jaar(const char *input, const char *jaar);
+struct C_Return encode_jaar(const char *input, const char *jaar);
 
 /// Reverses each word in a string.
 ///
@@ -84,10 +62,8 @@ char *encode_omkeren(const char *input);
 /// Disregarding to do this will cause a **memory leak**.
 ///
 /// Not applicable for Java.
-void jaar_free(C_Return cret);
+void jaar_free(struct C_Return cret);
 
 /// Has to be called after `encode_omkeren` to the free memory.<br/>
 /// Disregarding to do this will cause a **memory leak**.
 void omkeren_free(char *s);
-
-} // extern "C"
