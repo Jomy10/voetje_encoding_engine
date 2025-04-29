@@ -1,3 +1,7 @@
+> [!CAUTION]
+> This library has been replaced with [libcipher](https://github.com/Jomy10/libcipher). Libcipher has more functionality and is just as portable
+> (or even more portable) than this library. This repository is therefore now archived.
+
 # Voetje Encoding Engine
 Deze code wordt door ['t Voetje](https://voetje.jonaseveraert.be) gebruikt om tekst te encoderen, zowel op iOS als op Android.
 
